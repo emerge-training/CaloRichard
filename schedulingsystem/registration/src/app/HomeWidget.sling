@@ -1,0 +1,93 @@
+import jk.widget.common
+
+class #widget #main:
+
+ui LayerWidget
+{
+	CanvasWidget {
+		color = Color.instance("yellow")
+	}
+	VerticalScrollerWidget {
+		AlignWidget {
+			VerticalBoxWidget vbox : 0.5, 0.5, true {
+				margin = context.getHeightValue("500um")
+				spacing = context.getHeightValue("200um")
+				LabelWidget {
+					text = "REGISTRATION"
+					textColor = Color.black()
+					fontSize = context.getHeightValue("3mm")
+					textAlign = LabelWidget.ALIGN_CENTER
+					fontBold = true
+				}
+				TextInputWidget firstname {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "First Name"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget lastName {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Middle Name"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget middlename {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Last Name"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Address"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Age"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Gender"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget {
+					type = TextInputWidget.TYPE_PHONE_NUMBER
+					placeholder = "Mobile Number"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				
+			
+			}
+		}
+	}
+}
+
+func initializeWidget override
+{
+	
+	var savebtn = ButtonWidget.forText(context, "Save", func {
+		vbox.addWidget(getFullName())
+	})
+	savebtn.setWidgetFontSize(context.getHeightValue("2mm"))
+	vbox.addWidget(savebtn)
+}
+
+func getFullName as Widget
+{
+	var fullname = new LabelWidget(context)
+	fullname.setWidgetText("Name : " .. firstname.getWidgetText() .. " " .. lastName.getWidgetText() .. " " .. middlename.getWidgetText())
+	return fullname
+}

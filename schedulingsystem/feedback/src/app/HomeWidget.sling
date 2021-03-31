@@ -1,0 +1,51 @@
+import jk.widget.common
+
+class #widget #main:
+
+ui LayerWidget
+{
+	CanvasWidget {
+		color = Color.instance("#949796")
+	}
+	VerticalBoxWidget vbox {
+		margin = context.getHeightValue("5000um")
+		spacing = context.getHeightValue("2000um")
+		LabelWidget {
+			text = "FEEDBACK"
+			textColor = Color.black()
+			fontSize = context.getHeightValue("3mm")
+			textAlign = LabelWidget.ALIGN_CENTER
+			fontBold = true
+		}
+		TextInputWidget {
+			type = TextInputWidget.TYPE_NAME
+			placeholder = " Name "
+			backgroundColor = Color.white()
+			fontSize = context.getHeightValue("2mm")
+			padding = context.getHeightValue("2500um")
+		}
+	}
+}
+
+func initializeWidget override
+{
+	var message = new TextAreaWidget(context)
+	message.setWidgetText(" type here ")
+	message.setWidgetRows(5)
+	message.setWidgetPadding(context.getHeightValue("2500um"))
+	message.setWidgetPlaceholder("Please enter your feedback.")
+	message.setWidgetMaxLength(100)
+	vbox.addWidget(message)
+	var sendbtn = ButtonWidget.forText(context, "Send", func{
+		vbox.addWidget(getMessage(message.getWidgetText()))
+	})
+	sendbtn.setWidgetFontSize(context.getHeightValue("2mm"))
+	vbox.addWidget(sendbtn)
+}
+
+func getMessage(str as string) as Widget
+{
+	var msg = new LabelWidget(context)
+	msg.setWidgetText(str)
+	return msg
+}
