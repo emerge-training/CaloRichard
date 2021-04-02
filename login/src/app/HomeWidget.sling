@@ -1,0 +1,55 @@
+import jk.widget.common
+
+class #widget #main:
+
+ui LayerWidget
+{
+	CanvasWidget {
+		color = Color.instance("#FF69B4")
+	}
+	HorizontalBoxWidget hbox {
+	VerticalBoxWidget vbox {
+		margin = context.getHeightValue("8000um")
+		spacing = context.getHeightValue("4000um")
+		LabelWidget {
+			text = "LOGIN"
+			textColor = Color.black()
+			fontSize = context.getHeightValue("3mm")
+			textAlign = LabelWidget.ALIGN_CENTER
+			fontBold = true
+		}
+		TextInputWidget {
+			type = TextInputWidget.TYPE_NAME
+			placeholder = "Username"
+			backgroundColor = Color.white()
+			fontSize = context.getHeightValue("3mm")
+			padding = context.getHeightValue("2500um")
+		}
+		TextInputWidget {
+			type = TextInputWidget.TYPE_PASSWORD
+			placeholder = "Password"
+			backgroundColor = Color.white()
+			fontSize = context.getHeightValue("3mm")
+			padding = context.getHeightValue("2500um")
+
+		}
+	}
+}
+}
+func initializeWidget override
+{
+	var message = new TextAreaWidget(context)
+	vbox.addWidget(message)
+	var sendbtn = ButtonWidget.forText(context, "Login", func{
+		vbox.addWidget(getMessage(message.getWidgetText()))
+	})
+	sendbtn.setWidgetFontSize(context.getHeightValue("2mm"))
+	vbox.addWidget(sendbtn)
+}
+
+func getMessage(str as string) as Widget
+{
+	var msg = new LabelWidget(context)
+	msg.setWidgetText(str)
+	return msg
+}
