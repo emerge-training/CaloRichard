@@ -14,7 +14,7 @@ func create(context as GuiApplicationContext, parentWidget as Widget = null) sta
 {
     assert context
     instance = new this()
-    instance.setApiUrl("http://ec2-52-77-213-85.ap-southeast-1.compute.amazonaws.com:30092")
+    instance.setApiUrl("http://ec2-13-228-25-234.ap-southeast-1.compute.amazonaws.com:30075")
     instance.setContext(context)
     if parentWidget:
         instance.setParentWidget(parentWidget)
@@ -27,8 +27,7 @@ func onError(error as Error, callback as function<void,Error>) override
         onDefaultErrorHandler(error)
     base.onError(error, callback)
 }
-
-func onDefaultErrorHandler(error as Error) override
+    func onDefaultErrorHandler(error as Error) override
 {
     var context = assert getContext()
     assert error
@@ -37,14 +36,17 @@ func onDefaultErrorHandler(error as Error) override
     widgetDefaultErrorHandler(error)
 }
 
-func addTask(data as DynamicMap, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
-    doPost("/task/", data, callback, errorCallback)
+// RIDERREGISTRATION
+//
 
-func updateTask(id as string, data as DynamicMap, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
-    doPut("/task/" .. id, data, callback, errorCallback)
+func addRiderregistration(data as DynamicMap, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
+    doPost("/riderregistration/", data, callback, errorCallback)
 
-func deleteTask(id as string, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
-    doDelete("/task/" .. id, callback, errorCallback)
+func updateRiderregistration(id as string, data as DynamicMap, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
+    doPut("/riderresgistration/" .. id, data, callback, errorCallback)
 
-func getTasks(callback as function<void, DynamicMap>, errorCallback as function<void, Error> = null):
-    doGet("/tasks/", callback, errorCallback)
+func deleteRiderregistration(id as string, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
+    doDelete("/riderregistration/" .. id, callback, errorCallback)
+
+func getRiderregistrations(callback as function<void, DynamicMap>, errorCallback as function<void, Error> = null):
+    doGet("/riderregistration/", callback, errorCallback)

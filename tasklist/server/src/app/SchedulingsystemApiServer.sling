@@ -7,7 +7,7 @@ func initializeServer(server as HTTPServer) override as bool
 {
     assert base.initializeServer(server)
     server.setCreateOptionsResponseHandler(func(req as HTTPServerRequest) as HTTPServerResponse {
-        return TasklistConfig.getCorsUtil().handlePreflightRequest(req)
+        return SchedulingsystemConfig.getCorsUtil().handlePreflightRequest(req)
     })
     return true
 }
@@ -15,11 +15,12 @@ func initializeServer(server as HTTPServer) override as bool
 func initializeApplication override as bool
 {
     assert base.initializeApplication()
-    var db = TasklistDatabase.forContext(ctx)
-    db.updateTables()
+    var db = SchedulingsystemDatabase.forContext(ctx)
+    
     db.close()
     return true
 }
 
 main:
-    return new this().setWorker(typeinfo TasklistApiHandler).executeMain(args)
+    return new this().setWorker(typeinfo SchedulingsystemApiHandler).executeMain(args)
+    

@@ -1,0 +1,111 @@
+import jk.log
+import jk.sqlite
+import jk.mysql
+import jk.sql
+import jk.env
+import jk.time
+
+class:
+
+model Riderregistration
+{
+    id as int
+    firstname as string
+    middlename as string
+    lastname as string
+   
+}
+
+
+
+
+const RIDERREGISTRATION = "Riderregistration"
+
+
+pvar db as MySQLDatabase
+
+func forContext(ctx as LoggingContext) static as this
+{
+    var cstr = EnvironmentVariable.get("TASK_DATABASE")
+    Log.debug(ctx, "Opening database connection: '" .. cstr .."'")
+    db = MySQLDatabase.forConnectionStringSync(ctx, cstr)
+    if not db:
+        Error.throw("failedToConnectToDatabase", cstr)
+    var v = new this()
+    v.setDb(db)
+    return v
+}
+
+func updateTable(table as SQLTableInfo)
+{
+    if not table:
+        Error.throw("nullTable", "updateTable")
+    if not db:
+        Error.throw("nullTable", "updateTable")
+    if not db.ensureTableExistsSync(table):
+        Error.throw("failedToUpdateTable", table.getName())
+}
+
+// # Riderregistration
+// # this is just a comment line
+// #
+
+func updateRiderregistrationTables
+{
+    var riderregistration = SQLTableInfo.forName(RIDERREGISTRATION)
+    riderregistration.addStringKeyColumn("id")
+    riderregistration.addStringColumn("firstname")
+    riderregistration.addStringColumn("middlename")
+    riderregistration.addStringColumn("lastname")   
+    updateTable(riderregistration)
+}
+
+func addRiderregistration(riderregistration as Riderregistration) as Riderregistration
+{
+    assert riderregistration
+ //   riderregistration.setTimeStampAddedValue(SystemClock.asUTCSeconds())
+    assert db.executeSync(db.prepareInsertStatementSync(RIDERREGISTRATION, riderregistration.toDynamicMap()))
+    return riderregistration
+}
+
+/*func updateRiderregistration(id as string, riderregistration as Riderregistration) as bool
+{
+    assert riderregistration
+  //  riderregistration.setTimeStampLastUpdatedValue(SystemClock.asUTCSeconds())
+    //var criteria = new Riderregistration()
+    //criteria.setId(id)
+    return db.executeSync(db.prepareUpdateStatementSync(RIDERREGISTRATION, criteria.toDynamicMap(), riderregistration.toDynamicMap()))
+}*/
+
+/*func deleteRiderregistration(id as string) as bool
+{
+    //var criteria = new Riderregistration()
+    //criteria.setId(id)
+    return db.executeSync(db.prepareDeleteStatementSync(RIDERREGISTRATION, criteria.toDynamicMap()))
+}
+*/
+func getRiderregistration as DynamicMap
+{
+    var v = new vector<Riderregistration>
+    var it = assert db.querySync(db.prepareQueryAllStatementSync(RIDERREGISTRATION)):
+        return null
+    while it {
+        var o = it.next()
+        if not o:
+            break
+        var riderregistration = Riderregistration.forJsonObject(o)
+        if not riderregistration:
+            continue
+        v += riderregistration
+    }
+    var data = new DynamicMap()
+    data.setObject("records", v)
+    return data
+}
+
+func close
+{
+    if db:
+        db.closeSync()
+    db = null
+}

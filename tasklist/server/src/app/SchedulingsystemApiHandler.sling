@@ -1,0 +1,55 @@
+import jk.http.client
+import jk.http.worker
+
+class is HTTPRPCRouter #webapi2:
+
+model RiderregistrationRequest
+{
+    id as int
+    firstname as string
+    middlename as string
+    lastname as string
+
+}
+
+
+var db as SchedulingsystemDatabase
+var cors = SchedulingsystemConfig.getCorsUtil()
+
+func getRiderregistrationDatabase as SchedulingsystemDatabase
+{
+    if not db {
+        db = SchedulingsystemDatabase.forContext(getCtx())
+        db.updateRiderregistrationTables()
+    }
+    return db
+}
+
+
+func postProcess(req as HTTPWorkerRequest, resp as HTTPWorkerResponse) override:
+cors.handleWorkerRequest(req, resp)
+
+// # Riderregistration
+// # this is just a comment line
+// #
+
+GET "/riderregistration"
+{
+    var riderregistration = assert getRiderregistrationDatabase().getRiderregistration()
+    sendOk riderregistration
+}
+
+POST "/riderregistration"
+{
+    var requestData = assert RiderregistrationRequest.forJsonString(req.getBodyString()):
+        sendError "invalidRequest"
+    var riderregistration = new SchedulingsystemDatabase.Riderregistration()
+    riderregistration.setId(requestData.getId())
+    riderregistration.setFirstname(requestData.getFirstname())
+    riderregistration.setMiddlename(requestData.getMiddlename())
+    riderregistration.setLastname(requestData.getLastname())
+      
+    assert getRiderregistrationDatabase().addRiderregistration(riderregistration):
+        sendError "failedToSaveRiderregistration"
+    sendOk
+}
