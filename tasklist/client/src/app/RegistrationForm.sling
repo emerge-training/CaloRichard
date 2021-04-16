@@ -8,6 +8,12 @@ model Riderregistration
 	firstname as string
 	middlename as string
 	lastname as string
+	address as string
+	age as string
+	gender as string
+	contactnumber as string
+	username as string
+	password as string
 }
 
 ui LayerWidget
@@ -63,6 +69,48 @@ ui LayerWidget
 					fontSize = context.getHeightValue("2mm")
 					padding = context.getHeightValue("2500um")
 				}
+				TextInputWidget address {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Address"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget age {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Age"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget gender {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Gender"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget contactnumber {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Contactnumber"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget username {
+					type = TextInputWidget.TYPE_NAME
+					placeholder = "Username"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
+				TextInputWidget password {
+					type = TextInputWidget.TYPE_PASSWORD
+					placeholder = "Password"
+					backgroundColor = Color.white()
+					fontSize = context.getHeightValue("2mm")
+					padding = context.getHeightValue("2500um")
+				}
 				
 				
 			
@@ -80,6 +128,12 @@ func initializeWidget override
 		rider.setFirstname(firstname.getWidgetText())
 		rider.setMiddlename(middlename.getWidgetText())
 		rider.setLastname(lastname.getWidgetText())
+		rider.setAddress(address.getWidgetText())
+		rider.setAge(age.getWidgetText())
+		rider.setGender(gender.getWidgetText())
+		rider.setContactnumber(contactnumber.getWidgetText())
+		rider.setUsername(username.getWidgetText())
+		rider.setPassword(password.getWidgetText())
 		
 		APIClient.getInstance().addRiderregistration(rider.toDynamicMap(), func(res as DynamicMap){
 			context.showMessageDialog("Notice", "Rider Successfully Register")
@@ -87,6 +141,12 @@ func initializeWidget override
 			firstname.setWidgetText("")
 			middlename.setWidgetText("")
 			lastname.setWidgetText("")
+			address.setWidgetText("")
+			age.setWidgetText("")
+			gender.setWidgetText("")
+			contactnumber.setWidgetText("")
+			username.setWidgetText("")
+			password.setWidgetText("")
 			
 		}, func(err as Error){
 			context.showMessageDialog("Notice", "Failed to Register")

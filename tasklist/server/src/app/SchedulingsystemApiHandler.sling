@@ -9,6 +9,12 @@ model RiderregistrationRequest
     firstname as string
     middlename as string
     lastname as string
+    address as string
+    age as string
+    gender as string
+    contactnumber as string
+    username as string
+    password as string
 
 }
 
@@ -48,6 +54,12 @@ POST "/riderregistration"
     riderregistration.setFirstname(requestData.getFirstname())
     riderregistration.setMiddlename(requestData.getMiddlename())
     riderregistration.setLastname(requestData.getLastname())
+    riderregistration.setAddress(requestData.getAddress())
+    riderregistration.setAge(requestData.getAge())
+    riderregistration.setGender(requestData.getGender())
+    riderregistration.setContactnumber(requestData.getContactnumber())
+    riderregistration.setUsername(requestData.getUsername())
+    riderregistration.setUsername(requestData.getPassword())
       
     assert getRiderregistrationDatabase().addRiderregistration(riderregistration):
         sendError "failedToSaveRiderregistration"

@@ -77,6 +77,18 @@ class name app.RegistrationForm header extends jk.widget.LayerWidget public #wid
 		func getMiddlename as string
 		func setLastname(value as string) as app.RegistrationForm.Riderregistration
 		func getLastname as string
+		func setAddress(value as string) as app.RegistrationForm.Riderregistration
+		func getAddress as string
+		func setAge(value as string) as app.RegistrationForm.Riderregistration
+		func getAge as string
+		func setGender(value as string) as app.RegistrationForm.Riderregistration
+		func getGender as string
+		func setContactnumber(value as string) as app.RegistrationForm.Riderregistration
+		func getContactnumber as string
+		func setUsername(value as string) as app.RegistrationForm.Riderregistration
+		func getUsername as string
+		func setPassword(value as string) as app.RegistrationForm.Riderregistration
+		func getPassword as string
 		func toJsonObject override as object
 		func fromJsonObject(o as object) override as bool
 		func fromJsonString(o as string) as bool

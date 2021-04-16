@@ -749,7 +749,7 @@ AppAPIClient.create = function(context, parentWidget) {
 		return null;
 	}
 	AppAPIClient.instance = AppAPIClient.NEW();
-	AppAPIClient.instance.setApiUrl("http://ec2-13-228-25-234.ap-southeast-1.compute.amazonaws.com:30090");
+	AppAPIClient.instance.setApiUrl("http://ec2-13-228-25-234.ap-southeast-1.compute.amazonaws.com:30075");
 	AppAPIClient.instance.setContext(context);
 	if(parentWidget != null) {
 		AppAPIClient.instance.setParentWidget(parentWidget);
@@ -1083,6 +1083,12 @@ let AppRegistrationFormRiderregistration = function() {
 	this._firstname = null;
 	this._middlename = null;
 	this._lastname = null;
+	this._address = null;
+	this._age = null;
+	this._gender = null;
+	this._contactnumber = null;
+	this._username = null;
+	this._password = null;
 };
 
 AppRegistrationFormRiderregistration.prototype = (function(o) { function F() {}; F.prototype = o; return(new F()); }) (JkJsonJSONObjectAdapter.prototype);
@@ -1101,6 +1107,12 @@ AppRegistrationFormRiderregistration.NEW = function() {
 };
 
 AppRegistrationFormRiderregistration.prototype.CTOR_AppRegistrationFormRiderregistration = function() {
+	this._password = null;
+	this._username = null;
+	this._contactnumber = null;
+	this._gender = null;
+	this._age = null;
+	this._address = null;
 	this._lastname = null;
 	this._middlename = null;
 	this._firstname = null;
@@ -1147,6 +1159,60 @@ AppRegistrationFormRiderregistration.prototype.getLastname = function() {
 	return this._lastname;
 };
 
+AppRegistrationFormRiderregistration.prototype.setAddress = function(value) {
+	this._address = value;
+	return this;
+};
+
+AppRegistrationFormRiderregistration.prototype.getAddress = function() {
+	return this._address;
+};
+
+AppRegistrationFormRiderregistration.prototype.setAge = function(value) {
+	this._age = value;
+	return this;
+};
+
+AppRegistrationFormRiderregistration.prototype.getAge = function() {
+	return this._age;
+};
+
+AppRegistrationFormRiderregistration.prototype.setGender = function(value) {
+	this._gender = value;
+	return this;
+};
+
+AppRegistrationFormRiderregistration.prototype.getGender = function() {
+	return this._gender;
+};
+
+AppRegistrationFormRiderregistration.prototype.setContactnumber = function(value) {
+	this._contactnumber = value;
+	return this;
+};
+
+AppRegistrationFormRiderregistration.prototype.getContactnumber = function() {
+	return this._contactnumber;
+};
+
+AppRegistrationFormRiderregistration.prototype.setUsername = function(value) {
+	this._username = value;
+	return this;
+};
+
+AppRegistrationFormRiderregistration.prototype.getUsername = function() {
+	return this._username;
+};
+
+AppRegistrationFormRiderregistration.prototype.setPassword = function(value) {
+	this._password = value;
+	return this;
+};
+
+AppRegistrationFormRiderregistration.prototype.getPassword = function() {
+	return this._password;
+};
+
 AppRegistrationFormRiderregistration.prototype.toJsonObject = function() {
 	var v = JkLangDynamicMap.NEW();
 	if(this._id != null) {
@@ -1160,6 +1226,24 @@ AppRegistrationFormRiderregistration.prototype.toJsonObject = function() {
 	}
 	if(this._lastname != null) {
 		v.setObject("lastname", (this.asJsonValue(this._lastname)));
+	}
+	if(this._address != null) {
+		v.setObject("address", (this.asJsonValue(this._address)));
+	}
+	if(this._age != null) {
+		v.setObject("age", (this.asJsonValue(this._age)));
+	}
+	if(this._gender != null) {
+		v.setObject("gender", (this.asJsonValue(this._gender)));
+	}
+	if(this._contactnumber != null) {
+		v.setObject("contactnumber", (this.asJsonValue(this._contactnumber)));
+	}
+	if(this._username != null) {
+		v.setObject("username", (this.asJsonValue(this._username)));
+	}
+	if(this._password != null) {
+		v.setObject("password", (this.asJsonValue(this._password)));
 	}
 	return v;
 };
@@ -1178,6 +1262,12 @@ AppRegistrationFormRiderregistration.prototype.fromJsonObject = function(o1) {
 	this._firstname = v.getString("firstname", null);
 	this._middlename = v.getString("middlename", null);
 	this._lastname = v.getString("lastname", null);
+	this._address = v.getString("address", null);
+	this._age = v.getString("age", null);
+	this._gender = v.getString("gender", null);
+	this._contactnumber = v.getString("contactnumber", null);
+	this._username = v.getString("username", null);
+	this._password = v.getString("password", null);
 	return true;
 };
 
@@ -1221,6 +1311,12 @@ let AppRegistrationForm = function() {
 	this.firstname = null;
 	this.middlename = null;
 	this.lastname = null;
+	this.address = null;
+	this.age = null;
+	this.gender = null;
+	this.contactnumber = null;
+	this.username = null;
+	this.password = null;
 };
 
 AppRegistrationForm.prototype = (function(o) { function F() {}; F.prototype = o; return(new F()); }) (JkWidgetLayerWidget.prototype);
@@ -1242,6 +1338,12 @@ AppRegistrationForm.NEW_JkUiGuiApplicationContext = function(context) {
 };
 
 AppRegistrationForm.prototype.CTOR_AppRegistrationForm_JkUiGuiApplicationContext = function(context) {
+	this.password = null;
+	this.username = null;
+	this.contactnumber = null;
+	this.gender = null;
+	this.age = null;
+	this.address = null;
 	this.lastname = null;
 	this.middlename = null;
 	this.firstname = null;
@@ -1262,12 +1364,24 @@ AppRegistrationForm.prototype.initializeWidget = function() {
 		rider.setFirstname((this.firstname.getWidgetText()));
 		rider.setMiddlename((this.middlename.getWidgetText()));
 		rider.setLastname((this.lastname.getWidgetText()));
+		rider.setAddress((this.address.getWidgetText()));
+		rider.setAge((this.age.getWidgetText()));
+		rider.setGender((this.gender.getWidgetText()));
+		rider.setContactnumber((this.contactnumber.getWidgetText()));
+		rider.setUsername((this.username.getWidgetText()));
+		rider.setPassword((this.password.getWidgetText()));
 		AppAPIClient.getInstance().addRiderregistration((rider.toDynamicMap()), (function(res1) {
 			this.context.showMessageDialog("Notice", "Rider Successfully Register", null);
 			this.id.setWidgetText("");
 			this.firstname.setWidgetText("");
 			this.middlename.setWidgetText("");
 			this.lastname.setWidgetText("");
+			this.address.setWidgetText("");
+			this.age.setWidgetText("");
+			this.gender.setWidgetText("");
+			this.contactnumber.setWidgetText("");
+			this.username.setWidgetText("");
+			this.password.setWidgetText("");
 		}.bind(this)), (function(err1) {
 			this.context.showMessageDialog("Notice", "Failed to Register", null);
 		}.bind(this)));
@@ -1339,6 +1453,48 @@ AppRegistrationForm.prototype.createWidget = function() {
 	this.lastname.setWidgetFontSize((this.context.getHeightValue("2mm")));
 	this.lastname.setWidgetPadding1((this.context.getHeightValue("2500um")));
 	this.vbox.addWidget(this.lastname);
+	this.address = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
+	this.address.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NAME);
+	this.address.setWidgetPlaceholder("Address");
+	this.address.setWidgetBackgroundColor((JkGfxColor.white()));
+	this.address.setWidgetFontSize((this.context.getHeightValue("2mm")));
+	this.address.setWidgetPadding1((this.context.getHeightValue("2500um")));
+	this.vbox.addWidget(this.address);
+	this.age = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
+	this.age.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NAME);
+	this.age.setWidgetPlaceholder("Age");
+	this.age.setWidgetBackgroundColor((JkGfxColor.white()));
+	this.age.setWidgetFontSize((this.context.getHeightValue("2mm")));
+	this.age.setWidgetPadding1((this.context.getHeightValue("2500um")));
+	this.vbox.addWidget(this.age);
+	this.gender = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
+	this.gender.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NAME);
+	this.gender.setWidgetPlaceholder("Gender");
+	this.gender.setWidgetBackgroundColor((JkGfxColor.white()));
+	this.gender.setWidgetFontSize((this.context.getHeightValue("2mm")));
+	this.gender.setWidgetPadding1((this.context.getHeightValue("2500um")));
+	this.vbox.addWidget(this.gender);
+	this.contactnumber = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
+	this.contactnumber.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NAME);
+	this.contactnumber.setWidgetPlaceholder("Contactnumber");
+	this.contactnumber.setWidgetBackgroundColor((JkGfxColor.white()));
+	this.contactnumber.setWidgetFontSize((this.context.getHeightValue("2mm")));
+	this.contactnumber.setWidgetPadding1((this.context.getHeightValue("2500um")));
+	this.vbox.addWidget(this.contactnumber);
+	this.username = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
+	this.username.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NAME);
+	this.username.setWidgetPlaceholder("Username");
+	this.username.setWidgetBackgroundColor((JkGfxColor.white()));
+	this.username.setWidgetFontSize((this.context.getHeightValue("2mm")));
+	this.username.setWidgetPadding1((this.context.getHeightValue("2500um")));
+	this.vbox.addWidget(this.username);
+	this.password = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
+	this.password.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_PASSWORD);
+	this.password.setWidgetPlaceholder("Password");
+	this.password.setWidgetBackgroundColor((JkGfxColor.white()));
+	this.password.setWidgetFontSize((this.context.getHeightValue("2mm")));
+	this.password.setWidgetPadding1((this.context.getHeightValue("2500um")));
+	this.vbox.addWidget(this.password);
 	widget2.addWidget(this.vbox);
 	this.addWidget(widget2);
 };

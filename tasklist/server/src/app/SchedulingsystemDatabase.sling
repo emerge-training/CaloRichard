@@ -13,7 +13,12 @@ model Riderregistration
     firstname as string
     middlename as string
     lastname as string
-   
+    address as string
+    age as string
+    gender as string
+    contactnumber as string
+    username as string
+    password as string
 }
 
 
@@ -56,7 +61,15 @@ func updateRiderregistrationTables
     riderregistration.addStringKeyColumn("id")
     riderregistration.addStringColumn("firstname")
     riderregistration.addStringColumn("middlename")
-    riderregistration.addStringColumn("lastname")   
+    riderregistration.addStringColumn("lastname")
+    riderregistration.addStringColumn("address") 
+    riderregistration.addStringColumn("age") 
+    riderregistration.addStringColumn("gender") 
+    riderregistration.addStringColumn("contactnumber") 
+    riderregistration.addStringColumn("username") 
+    riderregistration.addStringColumn("password") 
+
+   
     updateTable(riderregistration)
 }
 
