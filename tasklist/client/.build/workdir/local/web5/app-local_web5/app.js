@@ -28240,7 +28240,7 @@ function app() {
 									riderpassword = record.getString("password", null);
 									if(!(riderusername == "") && !(riderpassword == "")) {
 										this.context.showMessageDialog("Notice", ("Welcome " + JkLangString.safeString(riderusername)), null);
-										JkWidgetCommonNavigationWidget.switchToContainer(this, (AppAdminForm.NEW_JkUiGuiApplicationContext(this.context)));
+										JkWidgetCommonNavigationWidget.switchToContainer(this, (AppRidersForm.NEW_JkUiGuiApplicationContext(this.context)));
 									}
 								}
 							}
@@ -28361,7 +28361,7 @@ function app() {
 			return null;
 		}
 		AppAPIClient.instance = AppAPIClient.NEW();
-		AppAPIClient.instance.setApiUrl("http://ec2-13-228-25-234.ap-southeast-1.compute.amazonaws.com:30075");
+		AppAPIClient.instance.setApiUrl("http://ec2-13-212-1-129.ap-southeast-1.compute.amazonaws.com:30075");
 		AppAPIClient.instance.setContext(context);
 		if(parentWidget != null) {
 			AppAPIClient.instance.setParentWidget(parentWidget);
@@ -28399,7 +28399,7 @@ function app() {
 		this.doDelete(("/riderregistration/" + JkLangString.safeString(id)), callback, errorCallback);
 	};
 	AppAPIClient.prototype.getRiderregistrations = function(callback, errorCallback) {
-		this.doGet("/riderregistration/", callback, errorCallback);
+		this.doGet("/riderregistration", callback, errorCallback);
 	};
 	AppAPIClient.prototype.getWidgetDefaultErrorHandler = function() {
 		return this.widgetDefaultErrorHandler;

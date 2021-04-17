@@ -39,9 +39,9 @@ cors.handleWorkerRequest(req, resp)
 // # this is just a comment line
 // #
 
-GET "/riderregistration"
+GET "/riderregistrations"
 {
-    var riderregistration = assert getRiderregistrationDatabase().getRiderregistration()
+    var riderregistration = assert getRiderregistrationDatabase().getRiderregistrations()
     sendOk riderregistration
 }
 

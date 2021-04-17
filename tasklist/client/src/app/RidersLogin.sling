@@ -83,7 +83,7 @@ func initializeWidget override
 						riderpassword = record.getString("password")
 						if riderusername != "" && riderpassword != "" {
 							context.showMessageDialog("Notice", "Welcome " .. riderusername)
-							NavigationWidget.switchToContainer(this, new AdminForm(context))
+							NavigationWidget.switchToContainer(this, new RidersForm(context))
 						}
 					}
 				}

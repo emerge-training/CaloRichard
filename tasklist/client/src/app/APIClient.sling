@@ -14,7 +14,7 @@ func create(context as GuiApplicationContext, parentWidget as Widget = null) sta
 {
     assert context
     instance = new this()
-    instance.setApiUrl("http://ec2-13-228-25-234.ap-southeast-1.compute.amazonaws.com:30075")
+    instance.setApiUrl("http://ec2-13-212-1-129.ap-southeast-1.compute.amazonaws.com:30075")
     instance.setContext(context)
     if parentWidget:
         instance.setParentWidget(parentWidget)
@@ -36,8 +36,7 @@ func onError(error as Error, callback as function<void,Error>) override
     widgetDefaultErrorHandler(error)
 }
 
-// RIDERREGISTRATION
-//
+
 
 func addRiderregistration(data as DynamicMap, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
     doPost("/riderregistration/", data, callback, errorCallback)
@@ -49,4 +48,7 @@ func deleteRiderregistration(id as string, callback as function<void, DynamicMap
     doDelete("/riderregistration/" .. id, callback, errorCallback)
 
 func getRiderregistrations(callback as function<void, DynamicMap>, errorCallback as function<void, Error> = null):
-    doGet("/riderregistration/", callback, errorCallback)
+    doGet("/riderregistration", callback, errorCallback)
+
+    // Loginrider
+//

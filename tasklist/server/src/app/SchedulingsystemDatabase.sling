@@ -76,7 +76,7 @@ func updateRiderregistrationTables
 func addRiderregistration(riderregistration as Riderregistration) as Riderregistration
 {
     assert riderregistration
- //   riderregistration.setTimeStampAddedValue(SystemClock.asUTCSeconds())
+ 
     assert db.executeSync(db.prepareInsertStatementSync(RIDERREGISTRATION, riderregistration.toDynamicMap()))
     return riderregistration
 }
@@ -84,7 +84,7 @@ func addRiderregistration(riderregistration as Riderregistration) as Riderregist
 /*func updateRiderregistration(id as string, riderregistration as Riderregistration) as bool
 {
     assert riderregistration
-  //  riderregistration.setTimeStampLastUpdatedValue(SystemClock.asUTCSeconds())
+  
     //var criteria = new Riderregistration()
     //criteria.setId(id)
     return db.executeSync(db.prepareUpdateStatementSync(RIDERREGISTRATION, criteria.toDynamicMap(), riderregistration.toDynamicMap()))
@@ -97,7 +97,7 @@ func addRiderregistration(riderregistration as Riderregistration) as Riderregist
     return db.executeSync(db.prepareDeleteStatementSync(RIDERREGISTRATION, criteria.toDynamicMap()))
 }
 */
-func getRiderregistration as DynamicMap
+func getRiderregistrations as DynamicMap
 {
     var v = new vector<Riderregistration>
     var it = assert db.querySync(db.prepareQueryAllStatementSync(RIDERREGISTRATION)):
