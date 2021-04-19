@@ -37,8 +37,8 @@ ui LayerWidget
 				fontSize = context.getHeightValue("5mm")
 			}
 			TextInputWidget username {
-				id #common = "username"
-				type = TextInputWidget.TYPE_NONASSISTED
+				
+				type = TextInputWidget.TYPE_NAME
 				backgroundColor = Color.white()
 				fontSize = context.getHeightValue("5mm")
 				fontFamily = "Raleway-Regular"
@@ -51,7 +51,7 @@ ui LayerWidget
 				fontSize = context.getHeightValue("5mm")
 			}
 			TextInputWidget password {
-				id #common = "password"
+
 				type = TextInputWidget.TYPE_PASSWORD
 				backgroundColor = Color.white()
 				fontSize = context.getHeightValue("5mm")
@@ -67,7 +67,7 @@ func initializeWidget override
 {
 	base.initializeWidget()
     var loginbtn = ButtonWidget.forText(context, "Login", func {
-		APIClient.getInstance().getRiderregistrations(func(response as DynamicMap){
+		APIClient.getInstance().getRiderregistration(func(response as DynamicMap){
 			var data = assert response.getDynamicMap("data")
 			var records = data.getDynamicVector("records")
 			var riderusername = ""

@@ -67,6 +67,7 @@ func initializeWidget override
 {
 	base.initializeWidget()
     var loginbtn = ButtonWidget.forText(context, "Login", func {
+		NavigationWidget.switchToContainer(this, new AdminForm(context))
 		
 })
 

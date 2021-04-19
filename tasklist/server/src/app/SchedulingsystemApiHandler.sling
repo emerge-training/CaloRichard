@@ -35,13 +35,11 @@ func getRiderregistrationDatabase as SchedulingsystemDatabase
 func postProcess(req as HTTPWorkerRequest, resp as HTTPWorkerResponse) override:
 cors.handleWorkerRequest(req, resp)
 
-// # Riderregistration
-// # this is just a comment line
-// #
 
-GET "/riderregistrations"
+
+GET "/riderregistration"
 {
-    var riderregistration = assert getRiderregistrationDatabase().getRiderregistrations()
+    var riderregistration = assert getRiderregistrationDatabase().getRiderregistration()
     sendOk riderregistration
 }
 
@@ -59,7 +57,7 @@ POST "/riderregistration"
     riderregistration.setGender(requestData.getGender())
     riderregistration.setContactnumber(requestData.getContactnumber())
     riderregistration.setUsername(requestData.getUsername())
-    riderregistration.setUsername(requestData.getPassword())
+    riderregistration.setPassword(requestData.getPassword())
       
     assert getRiderregistrationDatabase().addRiderregistration(riderregistration):
         sendError "failedToSaveRiderregistration"

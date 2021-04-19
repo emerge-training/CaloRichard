@@ -150,7 +150,7 @@ class name app.APIClient header extends jk.widget.web.JSONAPIClientWithGui publi
 	func addRiderregistration(data as jk.lang.DynamicMap, callback as function<void,jk.lang.DynamicMap>, errorCallback as function<void,jk.lang.Error>)
 	func updateRiderregistration(id as string, data as jk.lang.DynamicMap, callback as function<void,jk.lang.DynamicMap>, errorCallback as function<void,jk.lang.Error>)
 	func deleteRiderregistration(id as string, callback as function<void,jk.lang.DynamicMap>, errorCallback as function<void,jk.lang.Error>)
-	func getRiderregistrations(callback as function<void,jk.lang.DynamicMap>, errorCallback as function<void,jk.lang.Error> = null)
+	func getRiderregistration(callback as function<void,jk.lang.DynamicMap>, errorCallback as function<void,jk.lang.Error> = null)
 	func getWidgetDefaultErrorHandler as function<void,jk.lang.Error> #getterMethod
 	func setWidgetDefaultErrorHandler(v as function<void,jk.lang.Error>) as app.APIClient #setterMethod
 }
@@ -190,29 +190,29 @@ class name app.RidersSchedule header extends jk.widget.LayerWidget public #widge
 	import jk.widget.common
 	import jk.widget.datagrid
 	ctor(context as jk.ui.GuiApplicationContext)
-	class name Riderschedule header extends jk.json.JSONObjectAdapter implements jk.lang.StringObject public static
+	class name Ridersschedule header extends jk.json.JSONObjectAdapter implements jk.lang.StringObject public static
 	{
 		import jk.json
 		ctor
-		func setId(value as string) as app.RidersSchedule.Riderschedule
+		func setId(value as string) as app.RidersSchedule.Ridersschedule
 		func getId as string
-		func setFname(value as string) as app.RidersSchedule.Riderschedule
+		func setFname(value as string) as app.RidersSchedule.Ridersschedule
 		func getFname as string
-		func setMname(value as string) as app.RidersSchedule.Riderschedule
+		func setMname(value as string) as app.RidersSchedule.Ridersschedule
 		func getMname as string
-		func setLname(value as string) as app.RidersSchedule.Riderschedule
+		func setLname(value as string) as app.RidersSchedule.Ridersschedule
 		func getLname as string
-		func setDate(value as string) as app.RidersSchedule.Riderschedule
+		func setDate(value as string) as app.RidersSchedule.Ridersschedule
 		func getDate as string
-		func setTime(value as string) as app.RidersSchedule.Riderschedule
+		func setTime(value as string) as app.RidersSchedule.Ridersschedule
 		func getTime as string
 		func toJsonObject override as object
 		func fromJsonObject(o as object) override as bool
 		func fromJsonString(o as string) as bool
 		func toJsonString as string
 		func toString as string
-		func forJsonString(o as string) static as app.RidersSchedule.Riderschedule
-		func forJsonObject(o as object) static as app.RidersSchedule.Riderschedule
+		func forJsonString(o as string) static as app.RidersSchedule.Ridersschedule
+		func forJsonObject(o as object) static as app.RidersSchedule.Ridersschedule
 	}
 	func initializeWidget override
 	func createWidget override

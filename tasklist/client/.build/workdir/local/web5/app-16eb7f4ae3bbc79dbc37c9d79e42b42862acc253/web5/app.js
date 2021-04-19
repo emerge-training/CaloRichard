@@ -141,7 +141,7 @@ AppUpdateDelete.IS_INSTANCE = function(o) {
 	return o != null && o._t != null && o._t["AppUpdateDelete"] === true;
 };
 
-let AppRidersScheduleRiderschedule = function() {
+let AppRidersScheduleRidersschedule = function() {
 	JkJsonJSONObjectAdapter.call(this);
 	this._id = null;
 	this._fname = null;
@@ -151,22 +151,22 @@ let AppRidersScheduleRiderschedule = function() {
 	this._time = null;
 };
 
-AppRidersScheduleRiderschedule.prototype = (function(o) { function F() {}; F.prototype = o; return(new F()); }) (JkJsonJSONObjectAdapter.prototype);
-AppRidersScheduleRiderschedule.prototype.constructor = AppRidersScheduleRiderschedule;
-AppRidersScheduleRiderschedule.prototype._t = {
-	"AppRidersScheduleRiderschedule" : true,
+AppRidersScheduleRidersschedule.prototype = (function(o) { function F() {}; F.prototype = o; return(new F()); }) (JkJsonJSONObjectAdapter.prototype);
+AppRidersScheduleRidersschedule.prototype.constructor = AppRidersScheduleRidersschedule;
+AppRidersScheduleRidersschedule.prototype._t = {
+	"JkLangStringObject" : true,
 	"JkJsonJSONObjectAdapter" : true,
 	"JkJsonJSONObject" : true,
-	"JkLangStringObject" : true
+	"AppRidersScheduleRidersschedule" : true
 };
-AppRidersScheduleRiderschedule.prototype._tobj = AppRidersScheduleRiderschedule;
+AppRidersScheduleRidersschedule.prototype._tobj = AppRidersScheduleRidersschedule;
 
-AppRidersScheduleRiderschedule.NEW = function() {
-	var v = new AppRidersScheduleRiderschedule;
-	return v.CTOR_AppRidersScheduleRiderschedule();
+AppRidersScheduleRidersschedule.NEW = function() {
+	var v = new AppRidersScheduleRidersschedule;
+	return v.CTOR_AppRidersScheduleRidersschedule();
 };
 
-AppRidersScheduleRiderschedule.prototype.CTOR_AppRidersScheduleRiderschedule = function() {
+AppRidersScheduleRidersschedule.prototype.CTOR_AppRidersScheduleRidersschedule = function() {
 	this._time = null;
 	this._date = null;
 	this._lname = null;
@@ -179,61 +179,61 @@ AppRidersScheduleRiderschedule.prototype.CTOR_AppRidersScheduleRiderschedule = f
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.setId = function(value) {
+AppRidersScheduleRidersschedule.prototype.setId = function(value) {
 	this._id = value;
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.getId = function() {
+AppRidersScheduleRidersschedule.prototype.getId = function() {
 	return this._id;
 };
 
-AppRidersScheduleRiderschedule.prototype.setFname = function(value) {
+AppRidersScheduleRidersschedule.prototype.setFname = function(value) {
 	this._fname = value;
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.getFname = function() {
+AppRidersScheduleRidersschedule.prototype.getFname = function() {
 	return this._fname;
 };
 
-AppRidersScheduleRiderschedule.prototype.setMname = function(value) {
+AppRidersScheduleRidersschedule.prototype.setMname = function(value) {
 	this._mname = value;
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.getMname = function() {
+AppRidersScheduleRidersschedule.prototype.getMname = function() {
 	return this._mname;
 };
 
-AppRidersScheduleRiderschedule.prototype.setLname = function(value) {
+AppRidersScheduleRidersschedule.prototype.setLname = function(value) {
 	this._lname = value;
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.getLname = function() {
+AppRidersScheduleRidersschedule.prototype.getLname = function() {
 	return this._lname;
 };
 
-AppRidersScheduleRiderschedule.prototype.setDate = function(value) {
+AppRidersScheduleRidersschedule.prototype.setDate = function(value) {
 	this._date = value;
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.getDate = function() {
+AppRidersScheduleRidersschedule.prototype.getDate = function() {
 	return this._date;
 };
 
-AppRidersScheduleRiderschedule.prototype.setTime = function(value) {
+AppRidersScheduleRidersschedule.prototype.setTime = function(value) {
 	this._time = value;
 	return this;
 };
 
-AppRidersScheduleRiderschedule.prototype.getTime = function() {
+AppRidersScheduleRidersschedule.prototype.getTime = function() {
 	return this._time;
 };
 
-AppRidersScheduleRiderschedule.prototype.toJsonObject = function() {
+AppRidersScheduleRidersschedule.prototype.toJsonObject = function() {
 	var v = JkLangDynamicMap.NEW();
 	if(this._id != null) {
 		v.setObject("id", (this.asJsonValue(this._id)));
@@ -256,7 +256,7 @@ AppRidersScheduleRiderschedule.prototype.toJsonObject = function() {
 	return v;
 };
 
-AppRidersScheduleRiderschedule.prototype.fromJsonObject = function(o1) {
+AppRidersScheduleRidersschedule.prototype.fromJsonObject = function(o1) {
 	var v = (function(o) {
 		if(JkLangDynamicMap.IS_INSTANCE && JkLangDynamicMap.IS_INSTANCE(o)) {
 			return o;
@@ -275,36 +275,36 @@ AppRidersScheduleRiderschedule.prototype.fromJsonObject = function(o1) {
 	return true;
 };
 
-AppRidersScheduleRiderschedule.prototype.fromJsonString = function(o) {
+AppRidersScheduleRidersschedule.prototype.fromJsonString = function(o) {
 	return this.fromJsonObject((JkJsonJSONParser.parse(o)));
 };
 
-AppRidersScheduleRiderschedule.prototype.toJsonString = function() {
+AppRidersScheduleRidersschedule.prototype.toJsonString = function() {
 	return JkJsonJSONEncoder.encode((this.toJsonObject()), true, false);
 };
 
-AppRidersScheduleRiderschedule.prototype.toString = function() {
+AppRidersScheduleRidersschedule.prototype.toString = function() {
 	return this.toJsonString();
 };
 
-AppRidersScheduleRiderschedule.forJsonString = function(o) {
-	var v = AppRidersScheduleRiderschedule.NEW();
+AppRidersScheduleRidersschedule.forJsonString = function(o) {
+	var v = AppRidersScheduleRidersschedule.NEW();
 	if(!v.fromJsonString(o)) {
 		return null;
 	}
 	return v;
 };
 
-AppRidersScheduleRiderschedule.forJsonObject = function(o) {
-	var v = AppRidersScheduleRiderschedule.NEW();
+AppRidersScheduleRidersschedule.forJsonObject = function(o) {
+	var v = AppRidersScheduleRidersschedule.NEW();
 	if(!v.fromJsonObject(o)) {
 		return null;
 	}
 	return v;
 };
 
-AppRidersScheduleRiderschedule.IS_INSTANCE = function(o) {
-	return o != null && o._t != null && o._t["AppRidersScheduleRiderschedule"] === true;
+AppRidersScheduleRidersschedule.IS_INSTANCE = function(o) {
+	return o != null && o._t != null && o._t["AppRidersScheduleRidersschedule"] === true;
 };
 
 let AppRidersSchedule = function() {
@@ -597,7 +597,7 @@ AppRidersLogin.prototype.CTOR_AppRidersLogin_JkUiGuiApplicationContext = functio
 AppRidersLogin.prototype.initializeWidget = function() {
 	JkWidgetLayerWidget.prototype.initializeWidget.call(this);
 	var loginbtn = JkWidgetCommonButtonWidget.forText(this.context, "Login", (function() {
-		AppAPIClient.getInstance().getRiderregistrations((function(response1) {
+		AppAPIClient.getInstance().getRiderregistration((function(response1) {
 			var data = response1.getDynamicMap("data");
 			if(!(data != null)) {
 				return;
@@ -684,8 +684,7 @@ AppRidersLogin.prototype.createWidget = function() {
 	widget5.setWidgetFontSize((this.context.getHeightValue("5mm")));
 	this.vbox.addWidget(widget5);
 	this.username = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
-	JkWidgetWidget.setWidgetId(this.username, "username");
-	this.username.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NONASSISTED);
+	this.username.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_NAME);
 	this.username.setWidgetBackgroundColor((JkGfxColor.white()));
 	this.username.setWidgetFontSize((this.context.getHeightValue("5mm")));
 	this.username.setWidgetFontFamily("Raleway-Regular");
@@ -698,7 +697,6 @@ AppRidersLogin.prototype.createWidget = function() {
 	widget6.setWidgetFontSize((this.context.getHeightValue("5mm")));
 	this.vbox.addWidget(widget6);
 	this.password = JkWidgetCommonTextInputWidget.NEW_JkUiGuiApplicationContext(this.context);
-	JkWidgetWidget.setWidgetId(this.password, "password");
 	this.password.setWidgetType(JkWidgetCommonTextInputWidget.TYPE_PASSWORD);
 	this.password.setWidgetBackgroundColor((JkGfxColor.white()));
 	this.password.setWidgetFontSize((this.context.getHeightValue("5mm")));
@@ -749,7 +747,7 @@ AppAPIClient.create = function(context, parentWidget) {
 		return null;
 	}
 	AppAPIClient.instance = AppAPIClient.NEW();
-	AppAPIClient.instance.setApiUrl("http://ec2-13-212-1-129.ap-southeast-1.compute.amazonaws.com:30075");
+	AppAPIClient.instance.setApiUrl("http://ec2-54-251-29-250.ap-southeast-1.compute.amazonaws.com:30075");
 	AppAPIClient.instance.setContext(context);
 	if(parentWidget != null) {
 		AppAPIClient.instance.setParentWidget(parentWidget);
@@ -792,7 +790,7 @@ AppAPIClient.prototype.deleteRiderregistration = function(id, callback, errorCal
 	this.doDelete("/riderregistration/" + (JkLangString.safeString(id)), callback, errorCallback);
 };
 
-AppAPIClient.prototype.getRiderregistrations = function(callback, errorCallback) {
+AppAPIClient.prototype.getRiderregistration = function(callback, errorCallback) {
 	this.doGet("/riderregistration", callback, errorCallback);
 };
 
@@ -1799,6 +1797,7 @@ AppAdminLogin.prototype.CTOR_AppAdminLogin_JkUiGuiApplicationContext = function(
 AppAdminLogin.prototype.initializeWidget = function() {
 	JkWidgetLayerWidget.prototype.initializeWidget.call(this);
 	var loginbtn = JkWidgetCommonButtonWidget.forText(this.context, "Login", (function() {
+		JkWidgetCommonNavigationWidget.switchToContainer(this, (AppAdminForm.NEW_JkUiGuiApplicationContext(this.context)));
 	}.bind(this)));
 	var backbtn = JkWidgetCommonButtonWidget.forText(this.context, "Back To Menu", (function() {
 		JkWidgetCommonNavigationWidget.switchToContainer(this, (AppHomeWidget.NEW_JkUiGuiApplicationContext(this.context)));

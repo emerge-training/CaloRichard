@@ -4,7 +4,7 @@ import jk.widget.datagrid
 
 class #widget:
 
-model Riderschedule
+model Ridersschedule
 {
 	id as string
 	fname as string
@@ -93,8 +93,29 @@ ui LayerWidget
 
 func initializeWidget override {
     var savebtn = ButtonWidget.forText(context, "Schedule Now", func {
+	/*	var ridersched = new Ridersschedule
+		rider.setId(id.getWidgetText())
+		rider.setFirstname(fname.getWidgetText())
+		rider.setMiddlename(mame.getWidgetText())
+		rider.setLastname(lname.getWidgetText())
+		rider.setDate(date.getWidgetText())
+		rider.setTime(time.getWidgetText())
+
+		APIClient.getInstance().addRidersschedule(rider.toDynamicMap(), func(res as DynamicMap){
+			context.showMessageDialog("Notice", "Rider Schedule Save!!")
+			id.setWidgetText("")
+			fname.setWidgetText("")
+			mname.setWidgetText("")
+			lname.setWidgetText("")
+			date.setWidgetText("")
+			time.setWidgetText("")
+			
+			
+		}, func(err as Error){
+			context.showMessageDialog("Notice", "Failed to Save Schedule!")
+		})
 	
-		
+		*/
 	})
     var backbtn = ButtonWidget.forText(context, "Back to Admin", func {
 		NavigationWidget.switchToContainer(this, new AdminForm(context))

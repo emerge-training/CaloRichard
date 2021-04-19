@@ -14,7 +14,7 @@ func create(context as GuiApplicationContext, parentWidget as Widget = null) sta
 {
     assert context
     instance = new this()
-    instance.setApiUrl("http://ec2-13-212-1-129.ap-southeast-1.compute.amazonaws.com:30075")
+    instance.setApiUrl("http://ec2-54-251-29-250.ap-southeast-1.compute.amazonaws.com:30075")
     instance.setContext(context)
     if parentWidget:
         instance.setParentWidget(parentWidget)
@@ -47,7 +47,7 @@ func updateRiderregistration(id as string, data as DynamicMap, callback as funct
 func deleteRiderregistration(id as string, callback as function<void, DynamicMap>, errorCallback as function<void, Error>):
     doDelete("/riderregistration/" .. id, callback, errorCallback)
 
-func getRiderregistrations(callback as function<void, DynamicMap>, errorCallback as function<void, Error> = null):
+func getRiderregistration(callback as function<void, DynamicMap>, errorCallback as function<void, Error> = null):
     doGet("/riderregistration", callback, errorCallback)
 
     // Loginrider
