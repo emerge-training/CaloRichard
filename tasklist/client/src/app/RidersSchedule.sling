@@ -4,12 +4,12 @@ import jk.widget.datagrid
 
 class #widget:
 
-model Ridersschedule
+model Riderschedule
 {
 	id as string
-	fname as string
-	mname as string
-	lname as string
+	firstname as string
+	middlename as string
+	lastname as string
 	date as string
 	time as string
 }
@@ -66,7 +66,6 @@ ui LayerWidget
                 TextInputWidget lname {
 					type = TextInputWidget.TYPE_NAME
 					placeholder = "Last Name"
-                    maxLength = 1
 					backgroundColor = Color.instance("#b0b0b0")
 					fontSize = context.getHeightValue("3mm")
 					padding = context.getHeightValue("2500um")
@@ -74,7 +73,6 @@ ui LayerWidget
                  TextInputWidget time {
 					type = TextInputWidget.TYPE_NAME
 					placeholder = "Time"
-                    maxLength = 1
 					backgroundColor = Color.instance("#b0b0b0")
 					fontSize = context.getHeightValue("3mm")
 					padding = context.getHeightValue("2500um")
@@ -82,7 +80,6 @@ ui LayerWidget
 				   TextInputWidget date {
 					type = TextInputWidget.TYPE_NAME
 					placeholder = "Date"
-                    maxLength = 1
 					backgroundColor = Color.instance("#b0b0b0")
 					fontSize = context.getHeightValue("3mm")
 					padding = context.getHeightValue("2500um")
@@ -93,29 +90,25 @@ ui LayerWidget
 
 func initializeWidget override {
     var savebtn = ButtonWidget.forText(context, "Schedule Now", func {
-	/*	var ridersched = new Ridersschedule
+			var rider = new Riderschedule()
 		rider.setId(id.getWidgetText())
 		rider.setFirstname(fname.getWidgetText())
-		rider.setMiddlename(mame.getWidgetText())
+		rider.setMiddlename(mname.getWidgetText())
 		rider.setLastname(lname.getWidgetText())
-		rider.setDate(date.getWidgetText())
 		rider.setTime(time.getWidgetText())
-
-		APIClient.getInstance().addRidersschedule(rider.toDynamicMap(), func(res as DynamicMap){
-			context.showMessageDialog("Notice", "Rider Schedule Save!!")
+		rider.setDate(date.getWidgetText())
+		APIClient.getInstance().addRiderschedule(rider.toDynamicMap(), func(res as DynamicMap){
+			context.showMessageDialog("Notice", "Successfully Added Schedule")
 			id.setWidgetText("")
 			fname.setWidgetText("")
 			mname.setWidgetText("")
 			lname.setWidgetText("")
-			date.setWidgetText("")
 			time.setWidgetText("")
-			
-			
+			date.setWidgetText("")
 		}, func(err as Error){
-			context.showMessageDialog("Notice", "Failed to Save Schedule!")
+			context.showMessageDialog("Notice", "Failed to Register")
 		})
-	
-		*/
+		
 	})
     var backbtn = ButtonWidget.forText(context, "Back to Admin", func {
 		NavigationWidget.switchToContainer(this, new AdminForm(context))

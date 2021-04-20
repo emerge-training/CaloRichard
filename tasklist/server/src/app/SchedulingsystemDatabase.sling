@@ -21,11 +21,34 @@ model Riderregistration
     password as string
 }
 
+model Riderschedule
+{
+    id as int
+    firstname as string
+    middlename as string
+    lastname as string
+    date as string
+    time as string
+}
 
+model Riderfeedback
+{
+    id as string
+    fullname as string
+    message as string
+}
 
+model Adminlogin
+{
+    id as string
+    username as string
+    password as string
+}
 
 const RIDERREGISTRATION = "Riderregistration"
-
+const RIDERSCHEDULE = "Riderschedule"
+const RIDERFEEDBACK = "Riderfeedback"
+const ADMINLOGIN = "Adminlogin"
 
 pvar db as MySQLDatabase
 
@@ -51,6 +74,9 @@ func updateTable(table as SQLTableInfo)
         Error.throw("failedToUpdateTable", table.getName())
 }
 
+// # Riderregistration
+// # this is just a comment line
+// #
 
 func updateRiderregistrationTables
 {
@@ -73,27 +99,25 @@ func updateRiderregistrationTables
 func addRiderregistration(riderregistration as Riderregistration) as Riderregistration
 {
     assert riderregistration
- 
     assert db.executeSync(db.prepareInsertStatementSync(RIDERREGISTRATION, riderregistration.toDynamicMap()))
     return riderregistration
 }
 
-/*func updateRiderregistration(id as string, riderregistration as Riderregistration) as bool
+func updateRiderregistration(id as string, riderregistration as Riderregistration) as bool
 {
     assert riderregistration
-  
-    //var criteria = new Riderregistration()
-    //criteria.setId(id)
+    var criteria = new Riderregistration()
+   // criteria.setId(id)
     return db.executeSync(db.prepareUpdateStatementSync(RIDERREGISTRATION, criteria.toDynamicMap(), riderregistration.toDynamicMap()))
-}*/
+}
 
-/*func deleteRiderregistration(id as string) as bool
+func deleteRiderregistration(id as string) as bool
 {
-    //var criteria = new Riderregistration()
-    //criteria.setId(id)
+    var criteria = new Riderregistration()
+  //  criteria.setId(id)
     return db.executeSync(db.prepareDeleteStatementSync(RIDERREGISTRATION, criteria.toDynamicMap()))
 }
-*/
+
 func getRiderregistration as DynamicMap
 {
     var v = new vector<Riderregistration>
@@ -112,6 +136,153 @@ func getRiderregistration as DynamicMap
     data.setObject("records", v)
     return data
 }
+
+//Riderschedule
+//
+func updateRiderscheduleTables
+{
+    var riderschedule = SQLTableInfo.forName(RIDERSCHEDULE)
+    riderschedule.addStringKeyColumn("id")
+    riderschedule.addStringColumn("firstname")
+    riderschedule.addStringColumn("middlename")
+    riderschedule.addStringColumn("lastname")
+    riderschedule.addStringColumn("date") 
+    riderschedule.addStringColumn("time") 
+   
+    updateTable(riderschedule)
+}
+
+func addRiderschedule(riderschedule as Riderschedule) as Riderschedule
+{
+    assert riderschedule
+    assert db.executeSync(db.prepareInsertStatementSync(RIDERSCHEDULE, riderschedule.toDynamicMap()))
+    return riderschedule
+}
+
+func updateRiderschedule(id as string, riderschedule as Riderschedule) as bool
+{
+    assert riderschedule
+    var criteria = new Riderschedule()
+ //   criteria.setId(id)
+    return db.executeSync(db.prepareUpdateStatementSync(RIDERSCHEDULE, criteria.toDynamicMap(), riderschedule.toDynamicMap()))
+}
+
+func deleteRiderschedule(id as string) as bool
+{
+    var criteria = new Riderregistration()
+ //   criteria.setId(id)
+    return db.executeSync(db.prepareDeleteStatementSync(RIDERSCHEDULE, criteria.toDynamicMap()))
+}
+
+func getRiderschedule as DynamicMap
+{
+    var v = new vector<Riderschedule>
+    var it = assert db.querySync(db.prepareQueryAllStatementSync(RIDERSCHEDULE)):
+        return null
+    while it {
+        var o = it.next()
+        if not o:
+            break
+        var riderschedule = Riderschedule.forJsonObject(o)
+        if not riderschedule:
+            continue
+        v += riderschedule
+    }
+    var data = new DynamicMap()
+    data.setObject("records", v)
+    return data
+}
+
+// # Riderfeedback
+// # this is just a comment line
+// #
+
+func updateRiderfeedbackTables
+{
+    var riderfeedback = SQLTableInfo.forName(RIDERFEEDBACK)
+    riderfeedback.addStringKeyColumn("id")
+    riderfeedback.addStringColumn("fullname")
+    riderfeedback.addStringColumn("message")
+    
+    updateTable(riderfeedback)
+}
+
+func addRiderfeedback(riderfeedback as Riderfeedback) as Riderfeedback
+{
+    assert riderfeedback
+    assert db.executeSync(db.prepareInsertStatementSync(RIDERFEEDBACK, riderfeedback.toDynamicMap()))
+    return riderfeedback
+}
+
+/*func updateRiderregistration(id as string, riderregistration as Riderregistration) as bool
+{
+    assert riderregistration
+  //  riderregistration.setTimeStampLastUpdatedValue(SystemClock.asUTCSeconds())
+    //var criteria = new Riderregistration()
+    //criteria.setId(id)
+    return db.executeSync(db.prepareUpdateStatementSync(RIDERREGISTRATION, criteria.toDynamicMap(), riderregistration.toDynamicMap()))
+}*/
+
+/*func deleteRiderregistration(id as string) as bool
+{
+    //var criteria = new Riderregistration()
+    //criteria.setId(id)
+    return db.executeSync(db.prepareDeleteStatementSync(RIDERREGISTRATION, criteria.toDynamicMap()))
+}
+*/
+func getRiderfeedback as DynamicMap
+{
+    var v = new vector<Riderfeedback>
+    var it = assert db.querySync(db.prepareQueryAllStatementSync(RIDERFEEDBACK)):
+        return null
+    while it {
+        var o = it.next()
+        if not o:
+            break
+        var riderfeedback = Riderfeedback.forJsonObject(o)
+        if not riderfeedback:
+            continue
+        v += riderfeedback
+    }
+    var data = new DynamicMap()
+    data.setObject("records", v)
+    return data
+}
+
+
+//adminlogin
+//
+func updateAdminloginTables
+{
+    var riderregistration = SQLTableInfo.forName(ADMINLOGIN)
+    riderregistration.addStringKeyColumn("id")
+    riderregistration.addStringColumn("username")
+    riderregistration.addStringColumn("password")
+   
+    updateTable(riderregistration)
+}
+
+
+func getAdminlogin as DynamicMap
+{
+    var v = new vector<Adminlogin>
+    var it = assert db.querySync(db.prepareQueryAllStatementSync(ADMINLOGIN)):
+        return null
+    while it {
+        var o = it.next()
+        if not o:
+            break
+        var adminlogin = Adminlogin.forJsonObject(o)
+        if not adminlogin:
+            continue
+        v += adminlogin
+    }
+    var data = new DynamicMap()
+    data.setObject("records", v)
+    return data
+}
+
+
 
 func close
 {

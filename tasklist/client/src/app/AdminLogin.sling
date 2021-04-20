@@ -67,8 +67,32 @@ func initializeWidget override
 {
 	base.initializeWidget()
     var loginbtn = ButtonWidget.forText(context, "Login", func {
-		NavigationWidget.switchToContainer(this, new AdminForm(context))
-		
+		APIClient.getInstance().getAdminlogins(func(response as DynamicMap){
+			var data = assert response.getDynamicMap("data")
+			var records = data.getDynamicVector("records")
+			var adminusername = ""
+			var adminpassword = ""
+			if not records || records.getSize() < 1{
+				;
+			}
+			
+			else {
+				foreach record as DynamicMap in records.toVector(){
+					if username.getWidgetText() == record.getString("username") && password.getWidgetText() == record.getString("password"){
+						adminusername = record.getString("username")
+						adminpassword = record.getString("password")
+						if adminusername != "" && adminpassword != "" {
+							context.showMessageDialog("Notice", "Welcome " .. adminusername)
+							NavigationWidget.switchToContainer(this, new AdminForm(context))
+						}
+					}
+				}
+				if adminusername == "" && adminpassword == "" {
+					context.showMessageDialog("Notice","Admin Account Not Found")
+				}
+			}
+			
+	}) 
 })
 
 	 var backbtn = ButtonWidget.forText(context, "Back To Menu", func {	

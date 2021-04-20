@@ -18,7 +18,31 @@ model RiderregistrationRequest
 
 }
 
+model RiderscheduleRequest
+{
+    id as int
+    firstname as string
+    middlename as string
+    lastname as string
+    date as string
+    time as string
 
+}
+
+model RiderfeedbackRequest
+{
+    fullname as string
+    message as string
+
+}
+
+model AdminloginRequest
+{
+    id as string
+    username as string
+    password as string
+
+}
 var db as SchedulingsystemDatabase
 var cors = SchedulingsystemConfig.getCorsUtil()
 
@@ -27,15 +51,47 @@ func getRiderregistrationDatabase as SchedulingsystemDatabase
     if not db {
         db = SchedulingsystemDatabase.forContext(getCtx())
         db.updateRiderregistrationTables()
+        
     }
     return db
 }
 
+func getRiderscheduleDatabase as SchedulingsystemDatabase
+{
+    if not db {
+        db = SchedulingsystemDatabase.forContext(getCtx())
+        db.updateRiderscheduleTables()
+        
+    }
+    return db
+}
+
+func getRiderfeedbackDatabase as SchedulingsystemDatabase
+{
+    if not db {
+        db = SchedulingsystemDatabase.forContext(getCtx())
+        db.updateRiderfeedbackTables()
+        
+    }
+    return db
+}
+
+func getAdminloginDatabase as SchedulingsystemDatabase
+{
+    if not db {
+        db = SchedulingsystemDatabase.forContext(getCtx())
+        db.updateAdminloginTables()
+        
+    }
+    return db
+}
 
 func postProcess(req as HTTPWorkerRequest, resp as HTTPWorkerResponse) override:
 cors.handleWorkerRequest(req, resp)
 
-
+// # Riderregistration
+// # this is just a comment line
+// #
 
 GET "/riderregistration"
 {
@@ -62,4 +118,60 @@ POST "/riderregistration"
     assert getRiderregistrationDatabase().addRiderregistration(riderregistration):
         sendError "failedToSaveRiderregistration"
     sendOk
+}
+
+// RIDERSCHEDULE
+//
+GET "/riderschedule"
+{
+    var riderschedule = assert getRiderscheduleDatabase().getRiderschedule()
+    sendOk riderschedule
+}
+
+POST "/riderschedule"
+{
+    var requestData = assert RiderscheduleRequest.forJsonString(req.getBodyString()):
+        sendError "invalidRequest"
+    var riderschedule = new SchedulingsystemDatabase.Riderschedule()
+    riderschedule.setId(requestData.getId())
+    riderschedule.setFirstname(requestData.getFirstname())
+    riderschedule.setMiddlename(requestData.getMiddlename())
+    riderschedule.setLastname(requestData.getLastname())
+    riderschedule.setDate(requestData.getDate())
+    riderschedule.setTime(requestData.getTime())
+    
+    assert getRiderscheduleDatabase().addRiderschedule(riderschedule):
+        sendError "failedToSaveRidersschedule"
+    sendOk
+}
+
+// # riderfeedback
+// # this is just a comment line
+// #
+
+GET "/riderfeedback"
+{
+    var riderfeedback = assert getRiderfeedbackDatabase().getRiderfeedback()
+    sendOk riderfeedback
+}
+
+POST "/riderfeedback"
+{
+    var requestData = assert RiderfeedbackRequest.forJsonString(req.getBodyString()):
+        sendError "invalidRequest"
+    var riderfeedback = new SchedulingsystemDatabase.Riderfeedback()
+    riderfeedback.setFullname(requestData.getFullname())
+    riderfeedback.setMessage(requestData.getMessage())
+    
+    assert getRiderfeedbackDatabase().addRiderfeedback(riderfeedback):
+        sendError "failedToSaveFeedback"
+    sendOk
+}
+
+// adminlogin
+//
+GET "/adminlogin"
+{
+    var adminlogin = assert getAdminloginDatabase().getAdminlogin()
+    sendOk adminlogin
 }
