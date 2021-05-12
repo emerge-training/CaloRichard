@@ -10,7 +10,7 @@ func initialize override
     base.initialize()
     navi = new NavigationWidget(context)
     navi.setWidgetEnableActionBar(false)
-    APIClient.create(context, navi)
     setWidget(navi)
-    navi.pushWidget(new HomeWidget(context))
+    APIClient.create(context, navi)
+    navi.pushWidget(new TasklistAdd(context))
 }
